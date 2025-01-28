@@ -1,1 +1,60 @@
-<p>game-detail works!</p>
+<div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 my-10">
+  <!-- Header -->
+  <a [routerLink]="['/']" class="text-blue-500 underline mb-10 block">Volver</a>
+  <div class="flex items-center justify-between border-b border-b-gray-200 pb-4 mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">
+      {{ game.title }}
+    </h1>
+    <div class="flex items-center space-x-4">
+      <!-- Icon for platforms -->
+      <img *ngIf="game.platform === 'PC (Windows)'" class="w-8 h-8" src="/assets/monitor.svg" alt="Monitor Icon">
+      <img *ngIf="game.platform === 'Web Browser'" class="w-8 h-8" src="/assets/globe.svg" alt="Globe Icon">
+    </div>
+  </div>
+
+  <!-- Game Info Section -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Game Image -->
+    <div>
+      <img class="w-full h-auto object-cover rounded-md" src="{{ game.thumbnail }}" alt="{{ game.title }}">
+    </div>
+
+    <!-- Game Details -->
+    <div class="flex flex-col space-y-4">
+      <!-- Genre -->
+      <p class="text-lg">
+        <span class="font-medium text-gray-700">Genre:</span>
+        <span class="text-gray-900">{{ game.genre }}</span>
+      </p>
+      <!-- Release Date -->
+      <p class="text-lg">
+        <span class="font-medium text-gray-700">Release Date:</span>
+        <span class="text-gray-900">{{ game.release_date }}</span>
+      </p>
+      <!-- Developer -->
+      <p class="text-lg">
+        <span class="font-medium text-gray-700">Developer:</span>
+        <span class="text-gray-900">{{ game.developer }}</span>
+      </p>
+      <!-- Platform -->
+      <p class="text-lg">
+        <span class="font-medium text-gray-700">Platform:</span>
+        <span class="text-gray-900">{{ game.platform }}</span>
+      </p>
+      <!-- Description -->
+      <p class="text-lg text-gray-900 leading-relaxed">
+        {{ game.short_description }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer / Additional Details -->
+  <div class="mt-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Additional Details</h2>
+    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+      <li>
+        <span class="font-medium">Publisher:</span> {{game.publisher}}
+      </li>
+    </ul>
+  </div>
+</div>
