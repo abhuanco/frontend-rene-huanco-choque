@@ -1,1 +1,51 @@
-<p>game-filter works!</p>
+<div class="p-4 bg-gray-100 rounded-lg">
+  <h2 class="text-lg font-bold mb-4">Filtrar Juegos</h2>
+  <div class="space-y-4">
+    <!-- Filtro por nombre -->
+    <input
+      [(ngModel)]="name"
+      (input)="onFilterChange()"
+      placeholder="Nombre del juego"
+      class="w-full p-2 border rounded"
+    />
+
+    <!-- Filtro por género -->
+    <select
+      [(ngModel)]="genre"
+      (change)="onFilterChange()"
+      class="w-full p-2 border rounded"
+    >
+      <option value="">Selecciona un género</option>
+      <option value="MMORPG">MMORPG</option>
+      <option value="Shooter">Shooter</option>
+      <option value="Strategy">Strategy</option>
+      <option value="Action RPG">Action RPG</option>
+      <option value="Battle Royale">Battle Royale</option>
+      <option value="ARPG">ARPG</option>
+      <option value="MMOARPG">MMOARPG</option>
+      <option value="Fighting">Fighting</option>
+      <option value="MOBA">MOBA</option>
+      <option value="Card Game">Card Game</option>
+      <option value="Action Game">Action Game</option>
+      <option value="Action">Action</option>
+      <option value="Sports">Sports</option>
+      <option value="MMO">MMO</option>
+      <option value="Racing">Racing</option>
+      <option value="Social">Social</option>
+      <option value=" MMORPG"> MMORPG</option>
+      <option value="Fantasy">Fantasy</option>
+    </select>
+
+    <!-- Filtro por plataforma -->
+    <select
+      [(ngModel)]="platform"
+      (change)="onFilterChange()"
+      class="w-full p-2 border rounded"
+    >
+      <option value="">Selecciona una plataforma</option>
+      <option value="pc">PC (Windows)</option>
+      <option value="browser">Web Browser</option>
+      <option value="all">PC (Windows), Web Browser</option>
+    </select>
+  </div>
+</div>

@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
-import {ApiService} from '../../../../core/services/api.service';
 import {Game} from '../../../../core/models/game.model';
-import {RouterLink} from '@angular/router';
-import {NgForOf} from '@angular/common';
+import {GameService} from '../../../../core/services/game.service';
 
 @Component({
   standalone: false,
@@ -12,12 +10,20 @@ import {NgForOf} from '@angular/common';
 export class GameListComponent {
   games: Game[] = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(private gameService: GameService) {
   }
 
   ngOnInit(): void {
-    this.apiService.getGames().subscribe((data: Game[]) => {
+    this.loadGames();
+  }
+
+  loadGames(name?: string, genre?: string, platform?: string): void {
+    this.gameService.getGamesByFilter(name, genre, platform).subscribe(data => {
       this.games = data;
     });
+  }
+
+  onFilterChange(filter: any): void {
+    this.loadGames(filter.name, filter.genre, filter.platform);
   }
 }
